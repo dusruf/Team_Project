@@ -9,8 +9,6 @@
 <body>
 <h1>
 	Hello world!  
-</h1>
-
-한글깨짐테스트
+</h1>아무렇게
 </body>
 </html>
