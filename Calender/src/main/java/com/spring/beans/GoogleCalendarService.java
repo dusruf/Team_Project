@@ -22,7 +22,7 @@ import com.google.api.services.calendar.CalendarScopes;
 //import com.google.api.services.calendar.model.CalendarListEntry;
  
 public class GoogleCalendarService {
- 
+	private String test;
     private static final String APPLICATION_NAME = "Google Calendar API Java Quickstart";
  
     private static final java.io.File DATA_STORE_DIR = new java.io.File(
