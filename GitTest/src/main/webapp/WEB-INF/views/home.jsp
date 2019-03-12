@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
 	<title>Home</title>
@@ -9,6 +9,6 @@
 	Hello world!  
 </h1>
 
-<P>  나의 이름은 고연우 생일은 4월 13일 지금 감자튀김이 먹고 싶다 </P>
+<P>  ëì ì´ë¦ì ê³ ì°ì° ìì¼ì 4ì 13ì¼ ì§ê¸ ê°ìíê¹ì´ ë¨¹ê³  ì¶ë¤ </P>
 </body>
 </html>
