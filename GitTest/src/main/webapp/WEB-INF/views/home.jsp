@@ -5,10 +5,9 @@
 	<title>Home</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
 
-<P>  ëì ì´ë¦ì ê³ ì°ì° ìì¼ì 4ì 13ì¼ ì§ê¸ ê°ìíê¹ì´ ë¨¹ê³  ì¶ë¤ </P>
+<h3>Hellow Showa Hitotachi</h3>
+
+
 </body>
 </html>
