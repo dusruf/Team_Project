@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<h3>Hellow Showa Hitotachi</h3>
+<h3>Hello Showa Hitotachi</h3>
 
 
 </body>
