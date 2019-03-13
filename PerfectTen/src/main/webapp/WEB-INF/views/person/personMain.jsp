@@ -1,0 +1,60 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>		
+</head>
+
+<script>
+
+$(function(){
+
+	$("#resumeReg").on("click",function(){
+			
+		$("#resumeRegForm").submit();
+
+	});//resumeReg on click
+
+	$("#resumeUpdate").on("click",function(){
+		
+		$("#resumeUpdateForm").submit();
+
+	});//resumeUpdate on click	
+	
+	$("#qnaBoard").on("click",function(){
+		
+		$("#qnaBoardForm").submit();
+
+	});//qnaBoard on click	
+	
+});//JQ 틀
+
+</script>
+
+<body>
+
+<h1>person Main</h1>
+
+<form id="resumeRegForm" action="resumeReg" method="get">
+<div id="resumeReg">
+<h1>이력서 등록</h1>
+</div>
+</form>
+
+<form id="resumeUpdateForm" action="resumeUpdate" method="get">
+<div id="resumeUpdate">
+<h1>이력서 관리</h1>
+</div>
+</form>
+
+<form id="qnaBoardForm" action="qnaBoard" method="get">
+<div id="qnaBoard">
+<h1>상담 게시판</h1>
+</div>
+</form>
+
+</body>
+</html>
