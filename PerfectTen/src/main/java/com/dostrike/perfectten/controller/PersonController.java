@@ -20,12 +20,6 @@ public class PersonController {
 		return "person/resume";
 	
 	}
-	
-	@RequestMapping(value = "/qnaBoard", method = RequestMethod.GET)
-	public String qnaBoard() {
-	
-		return "qnaBoard";
-	
-	}
+
 	
 }//class

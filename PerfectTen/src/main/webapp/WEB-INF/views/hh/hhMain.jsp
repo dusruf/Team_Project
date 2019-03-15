@@ -66,7 +66,7 @@ $(function(){
 <div id="personList"><h1>관심 인재 list</h1></div>
 </form>
 
-<form id="qnaBoardForm" action="goQnaBoard" method="get">
+<form id="qnaBoardForm" action="qnaBoard" method="get">
 <div id="qnaBoard"><h1>상담 게시판</h1></div>
 </form>
 

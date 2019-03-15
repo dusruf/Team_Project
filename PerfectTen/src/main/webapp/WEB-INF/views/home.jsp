@@ -12,8 +12,9 @@
 <label><input type="radio" name="loginFlag" value="1">헤드헌터 회원</label>
 <label><input type="radio" name="loginFlag" value="2">구직 회원</label><br>
 
+로그인
 ID : <input type="text" name="loginId"><br>
-PW : <input type="text" name="loginPw"><br>
+PW : <input type="password" name="loginPw"><br>
 <input type="submit" value="LogIn">
 </form>
 

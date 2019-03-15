@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 게시판 처리 SQL -->
+<mapper namespace="com.dostrike.perfectten.DAO.qnaMapper">
+
+<select id="qList" resultType="QnaBoard">
+
+	SELECT
+		qBoardSeq,
+		PERSONID,
+		TITLE,
+		CONTENTS,
+		HITCOUNT,
+		INDATE,
+		SECRETFLAG
+	FROM
+		QNABOARD
+	ORDER BY
+		QBOARDSEQ DESC
+
+</select>
+
+<insert id="inputQna" parameterType="QnaBoard">
+	
+	INSERT INTO QNABOARD(
+
+    QBOARDSEQ
+    ,PERSONID
+    ,TITLE
+    ,CONTENTS
+    ,HITCOUNT
+    ,INDATE
+    ,SECRETFLAG
+
+	)VALUES(
+
+	QBOARDSEQ.NEXTVAL
+	,#{personId}
+	,#{title}
+	,#{contents}
+	,0
+	,SYSDATE
+	,0
+	
+	)
+
+</insert>
+
+</mapper>
