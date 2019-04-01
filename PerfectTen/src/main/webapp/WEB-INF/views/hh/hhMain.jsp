@@ -62,7 +62,7 @@ $(function(){
 <div id="statusCheck"><h1>진행 상황</h1></div>
 </form>
 
-<form id="personListForm" action="personList" method="get">
+<form id="personListForm" action="goPersonList" method="get">
 <div id="personList"><h1>관심 인재 list</h1></div>
 </form>
 

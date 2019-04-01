@@ -54,6 +54,7 @@
 			content+='<form action="personReg" method="post">';
 			content+='ID : <input type="text" name="personId"><br>';
 			content+='PW : <input type="password" name="personPw"><br>';
+			content+='이름 : <input type="text" name="personName"><br>';
 			content+='EMAIL : <input type="text" name="personEmail"><br>';
 			content+='<input type="hidden" name="loginFlag" value="2">';
 			content+='<input type="submit" value="회원 가입">';

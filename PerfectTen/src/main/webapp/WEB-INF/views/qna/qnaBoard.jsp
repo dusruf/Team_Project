@@ -13,8 +13,19 @@
 <script>
 
 $(function(){
+//	message();
 	init();
 });
+
+/*
+function message(){
+	
+	var message=$("#message").val();
+	
+	alert(message);
+	
+}
+*/
 
 function init(){
 	
@@ -39,8 +50,8 @@ function output(resp){
 	
 	$.each(resp, function(index, item){
 
-		data+='<tr>';
-		data+='<td>'+item.title+'</td>';
+		data+='<tr>';		
+		data+='<td><a href="qnaDetail?qBoardSeq='+item.qBoardSeq+'">'+item.title+'</a></td>';
 		data+='<td>'+item.personId+'</td>';
 		data+='<td>'+item.hitcount+'</td>';
 		data+='<td>'+item.indate+'</td>';
@@ -50,6 +61,7 @@ function output(resp){
 	
 	data+='</table>';
 	$("#qnaDiv").html(data);
+
 	
 }// function output()
 
@@ -66,10 +78,15 @@ function output(resp){
 </div>
 
 <c:if test="${sessionScope.loginFlag==2}">
-<form action="writeQna" method="get">
+<form action="writeQna">
 <button>글 등록</button>
 </form>
 </c:if>
+
+<form action="rePersonMain">
+<button>메인으로</button>
+</form>
+<input type="hidden" id="message" value="${message}">
 
 </body>
 </html>

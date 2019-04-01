@@ -25,8 +25,8 @@ public class UserController {
 	
 	@RequestMapping(value = "/hhReg", method = RequestMethod.POST)
 	public String hhReg(HeadHunter hh) {
-		
-		System.out.println(hh);
+				
+		//중복 검사 시에 HH 테이블과 PERSON 테이블 전부 갔다 와야 함
 		
 		int result=0;
 		result=dao.hhReg(hh);
@@ -36,8 +36,9 @@ public class UserController {
 	
 	@RequestMapping(value = "/personReg", method = RequestMethod.POST)
 	public String personReg(Person person) {
+
+		//중복 검사 시에 HH 테이블과 PERSON 테이블 전부 갔다 와야 함
 		
-		System.out.println(person);
 		int result=0;
 		result=dao.personReg(person);
 	
@@ -65,16 +66,21 @@ public class UserController {
 				
 				String loginId=hh.getHhId();
 				int loginFlag=hh.getLoginFlag();
+				String hhId=hh.getHhId();
+				String hhName=hh.getHhName();
+				
 				
 				session.setAttribute("loginId", loginId);
 				session.setAttribute("loginFlag", loginFlag);
+				session.setAttribute("hhId", hhId);
+				session.setAttribute("hhName", hhName);
 				
 				return "hh/hhMain";				
 			} else {
 				return "home";
 			}
 			
-		} else if(login.getLoginFlag()==2) {
+		} else if(login.getLoginFlag()==2) { //person 로그인
 
 			Person person;
 			person=dao.loginPerson(login);
@@ -82,9 +88,15 @@ public class UserController {
 			if (person!=null) {
 				
 				String loginId=person.getPersonId();
+				String personName=person.getPersonName();
+				String personEmail=person.getPersonEmail();
 				int loginFlag=person.getLoginFlag();
 				
+//				System.out.println("personName 확인 : "+personName);
+				
 				session.setAttribute("loginId", loginId);
+				session.setAttribute("personName", personName);
+				session.setAttribute("personEmail", personEmail);
 				session.setAttribute("loginFlag", loginFlag);
 				
 				return "person/personMain";

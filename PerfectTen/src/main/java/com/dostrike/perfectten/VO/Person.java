@@ -4,13 +4,15 @@ public class Person {
 
 	private String personId;
 	private String personPw;
+	private String personName;
 	private String personEmail;
 	private int loginFlag;
 
-	public Person(String personId, String personPw, String personEmail, int loginFlag) {
+	public Person(String personId, String personPw, String personName, String personEmail, int loginFlag) {
 		super();
 		this.personId = personId;
 		this.personPw = personPw;
+		this.personName = personName;
 		this.personEmail = personEmail;
 		this.loginFlag = loginFlag;
 	}
@@ -35,6 +37,14 @@ public class Person {
 		this.personPw = personPw;
 	}
 
+	public String getPersonName() {
+		return personName;
+	}
+
+	public void setPersonName(String personName) {
+		this.personName = personName;
+	}
+
 	public String getPersonEmail() {
 		return personEmail;
 	}
@@ -53,8 +63,8 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "Person [personId=" + personId + ", personPw=" + personPw + ", personEmail=" + personEmail
-				+ ", loginFlag=" + loginFlag + "]";
+		return "Person [personId=" + personId + ", personPw=" + personPw + ", personName=" + personName
+				+ ", personEmail=" + personEmail + ", loginFlag=" + loginFlag + "]";
 	}
 
 }// class

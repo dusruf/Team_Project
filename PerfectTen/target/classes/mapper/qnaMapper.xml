@@ -49,4 +49,53 @@
 
 </insert>
 
+<select id="selectQna" parameterType="int" resultType="hashmap">
+	select
+		board.qboardseq as qboardseq
+		,board.personid as personid
+		,board.title as title
+		,board.contents as contents
+		,board.hitcount as hitcount
+		,TO_CHAR(board.indate, 'YYYY-MM-DD HH24:MI') as indate
+		,board.secretflag as secretflag
+		,cmt.commentseq as commentseq
+		,cmt.hhname as hhname 
+		,cmt.comments as comments
+		,TO_CHAR(cmt.indate,'YYYY-MM-DD HH24:MI') as comdate
+	from
+		qnaboard board
+	left join
+		qnacomment cmt
+	on
+		board.qboardseq = cmt.qboardseq
+	where
+		board.qboardseq=#{qBoardSeq}
+</select>
+
+<insert id="insertComment" parameterType="QnaComment">
+
+	INSERT INTO QNACOMMENT(
+	
+	    COMMENTSEQ 
+	    , QBOARDSEQ  
+	    , HHID
+	    , HHNAME 
+	    , COMMENTS 
+	    , INDATE
+	    , PARENTSEQ 
+		
+	)VALUES(
+		COMMENTSEQ.NEXTVAL
+		, #{qBoardSeq}
+		, #{hhId}
+		, #{hhName}
+		, #{comments}
+		, SYSDATE
+		, 0
+	
+	)
+
+
+</insert>
+
 </mapper>

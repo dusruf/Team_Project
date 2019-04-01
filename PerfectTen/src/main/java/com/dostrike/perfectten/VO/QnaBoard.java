@@ -2,7 +2,7 @@ package com.dostrike.perfectten.VO;
 
 public class QnaBoard {
 
-	private String qBoardSeq;
+	private int qBoardSeq;
 	private String personId;
 	private String title;
 	private String contents;
@@ -10,7 +10,7 @@ public class QnaBoard {
 	private String indate;
 	private int secretFlag;
 
-	public QnaBoard(String qBoardSeq, String personId, String title, String contents, int hitcount, String indate,
+	public QnaBoard(int qBoardSeq, String personId, String title, String contents, int hitcount, String indate,
 			int secretFlag) {
 		super();
 		this.qBoardSeq = qBoardSeq;
@@ -26,11 +26,11 @@ public class QnaBoard {
 		super();
 	}
 
-	public String getqBoardSeq() {
+	public int getqBoardSeq() {
 		return qBoardSeq;
 	}
 
-	public void setqBoardSeq(String qBoardSeq) {
+	public void setqBoardSeq(int qBoardSeq) {
 		this.qBoardSeq = qBoardSeq;
 	}
 

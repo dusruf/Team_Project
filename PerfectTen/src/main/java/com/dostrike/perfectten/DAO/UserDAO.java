@@ -21,8 +21,6 @@ public class UserDAO {
 		
 		try {
 			result=mapper.hhReg(hh);
-			System.out.println("dao");
-			System.out.println(result);
 			return result;
 		} catch (Exception e) {
 			
