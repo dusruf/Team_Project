@@ -17,7 +17,7 @@ $(function(){
 
 	init();
 
-});//JQ 틀 
+});//JQ 틀
 
 function init(){
 	
