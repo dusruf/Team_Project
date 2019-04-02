@@ -191,6 +191,7 @@ public class HHController {
 		System.out.println(contactMessage);
 		
 		int result=dao.insertContactMessage(contactMessage);
+		System.out.println("contactMessage result : "+result);
 		
 		return result;
 	}

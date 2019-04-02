@@ -107,6 +107,10 @@ function contactPerson(){
 					
 					$("#contactDiv").html(success);				
 					
+				} else {
+					
+					alert("메세지 전송 오류");
+					
 				}
 				
 			}//success

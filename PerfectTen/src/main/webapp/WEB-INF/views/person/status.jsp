@@ -29,14 +29,12 @@ function init(){
 			
 			var data="";
 			
-			if (cmList!=null){ //여기 질문하기 메세지 없음이 떠야 함
+			if (cmList!=null){ //여기 질문하기 응답 후 메세지 없음이 떠야 함
 								
 				$.each(cmList,function(index,item){
 				
 					if (item.cmStatus==0) {//아직 응답하지 않은 cm만 출력
-					
-						alert("테스트");
-						
+											
 						data+='<table border="1">';
 						data+='<tr><td>메세지 제목</td><td>헤드헌터</td><td>보낸 날짜</td><td></td></tr>';
 						data+='<tr>'
@@ -109,11 +107,11 @@ function init(){
 									,success:function(finalResult){
 										
 										if (finalResult==1) {
-											alert("응답을 보냈습니다.");
 											var finalData="";
-											
+																					
 											$("#cmDetailDiv").html(finalData);
-
+											alert("응답을 보냈습니다.");
+											
 										}// 두번의 update가 모두 성공하는 if 
 										
 									}//changStatus success	

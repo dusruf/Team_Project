@@ -22,6 +22,7 @@ $(function(){
 
 	init();
 
+	
 });
 
 function init(){
@@ -35,7 +36,6 @@ function button(){
 	
 	var totalButton="";
 	
-//	totalButton+='<input type="button" class="addLanguage" value="언어 점수 추가아아아"><br>';	
 	totalButton+='<input type="button" class="addCareer" value="경력 추가아아아"><br>';
 	totalButton+='<input type="button" class="addAbility" value="보유 기술 및 능력 추가아아아"><br>';
 	totalButton+='<input type="button" class="addActivity" value="활동 추가아아아"><br>';
@@ -75,13 +75,12 @@ function addCareer(){
 	careerContent+='업무 내용 : <input type="text" name="careerTask"><br>';
 	careerContent+='비고 : <input type="text" name="careerDetails"><br>';
 
-	careerContent+='<input type="button" class="career-btn" value="경력 추가">';
+	careerContent+='<input type="button" class="career-btn" value="경력 추가" onclick="addCareer()">';
 	careerContent+='<input type="button" class="deleteCareer" value="삭제">';
 	careerContent+='</div>';
-	
+		
 	$("#careerDiv").append(careerContent);
-	$(".career-btn").on("click",addCareer);
-	
+
 	
 }//addCareer
 
@@ -99,12 +98,12 @@ function addLanguage(){
 	languageContent+='점수 : <input type="text" name="languageScore"><br>';
 	languageContent+='취득 기관 : <input type="text" name="languageOrg"><br>';
 	languageContent+='취득 일자 : <input type="date" name="languageDate"><br>';
-	languageContent+='<input type="button" class="language-btn" value="언어 점수 추가">';
+	languageContent+='<input type="button" class="language-btn" value="언어 점수 추가" onclick="addLanguage()">';
 	languageContent+='<input type="button" class="deleteLanguage" value="삭제">';
 	languageContent+='</div>';
 	
 	$("#languageDiv").append(languageContent);
-	$(".language-btn").on("click",addLanguage);
+//	$(".language-btn").on("click",addLanguage);
 	
 	
 }//addLanguage
@@ -122,12 +121,12 @@ function addCerti(){
 	certiContent+='자격증 이름 : <input type="text" name="certiTitle"><br>';
 	certiContent+='자격증 기관 : <input type="text" name="certiOrg"><br>';
 	certiContent+='자격증 취득 날짜 : <input type="date" name="certiDate"><br>';
-	certiContent+='<input type="button" class="certi-btn" value="자격증 추가">';
+	certiContent+='<input type="button" class="certi-btn" value="자격증 추가" onclick="addCerti()">';
 	certiContent+='<input type="button" class="deleteCerti" value="삭제">';
 	certiContent+='</div>';
 	
 	$("#certificateDiv").append(certiContent);
-	$(".certi-btn").on("click",addCerti);	
+//	$(".certi-btn").on("click",addCerti);	
 	
 }//add Certificate
 
@@ -145,12 +144,12 @@ function addActivity(){
 	activityContent+='대외활동 이름 : <input type="text" name="activityTitle"><br>';
 	activityContent+='대외활동 기관 : <input type="text" name="activityOrg"><br>';
 	activityContent+='상세내용 : <input type="text" name="activityDetails"><br>';
-	activityContent+='<input type="button" class="activity-btn" value="활동 추가">';
+	activityContent+='<input type="button" class="activity-btn" value="활동 추가" onclick="addActivity()">';
 	activityContent+='<input type="button" class="deleteActivity" value="삭제">';
 	activityContent+='</div>';
 	
 	$("#activityDiv").append(activityContent);
-	$(".activity-btn").on("click",addActivity);	
+//	$(".activity-btn").on("click",addActivity);	
 	
 	
 }//addActivity
@@ -167,12 +166,12 @@ function addAbility(){
 	abilityContent+='보유 능력 : <input type="text" name="abilityTitle"><br>';
 	abilityContent+='수준 : <input type="text" name="abilityStatus"><br>';
 	abilityContent+='상세내용 : <input type="text" name="abilityDetails"><br>';
-	abilityContent+='<input type="button" class="ability-btn" value="경력 추가">';
+	abilityContent+='<input type="button" class="ability-btn" value="경력 추가" onclick="addAbility"()>';
 	abilityContent+='<input type="button" class="deleteAbility" value="삭제">';
 	abilityContent+='</div>';
 	
 	$("#abilityDiv").append(abilityContent);
-	$(".ability-btn").on("click",addAbility);
+//	$(".ability-btn").on("click",addAbility);
 	
 }//function addAbility
 
