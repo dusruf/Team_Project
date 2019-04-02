@@ -37,18 +37,19 @@ function init(){
 			data+='<tr><td>회사 이름</td><td>직업 이름</td><td>구직자 이름</td><td></td><td></td></tr>';
 			
 			$.each(pickList,function(index, item){
-			
-				if (item.status==1) {
-
-					data+='<tr>';
-					data+='<td>'+item.comName+'</td>';
-					data+='<td>'+item.jobTitle+'</td>';
-					data+='<td>'+item.personName+'</td>';
-					data+='<td><button class="detail-btn" pick-value="'+item.personId+'">이력서 보기</button></td>';
+				
+				data+='<tr>';
+				data+='<td>'+item.comName+'</td>';
+				data+='<td>'+item.jobTitle+'</td>';
+				data+='<td>'+item.personName+'</td>';
+				data+='<td><button class="detail-btn" pick-value="'+item.personId+'">이력서 보기</button></td>';
+				if (item.contactFlag==0) {
 					data+='<td><button class="contact-btn" name-value="'+item.personName+'" contact-value="'+item.personId+'">컨택하기</button></td>';				
-					data+='</tr>';
-					
+				} else{
+					data+='<td>컨택 완료</td>';				
+
 				}
+				data+='</tr>';
 				
 			});// each
 				
@@ -78,7 +79,6 @@ function contactPerson(){
 	data+='<input type="hidden" id="personId" value="'+personId+'">'
 	data+='<input type="hidden" id="personId" value="'+personName+'">'
 	data+='<button id="send-btn">메세지 보내기</button>';
-	
 
 	$("#contactDiv").html(data);
 	$("#send-btn").on("click",sendMessage);
@@ -104,12 +104,16 @@ function contactPerson(){
 			,type:"post"
 			,success:function(result){
 				
-				if (result==1) {
+				if (result==11) {
 					alert("메세지를 성공적으로 보냈습니다.");	
 					
 					var success ="";
 					
 					$("#contactDiv").html(success);				
+					
+				} else if(result==1){
+					
+					alert("contactFlag 업데이트 오류");
 					
 				} else {
 					

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 게시판 처리 SQL -->
+<mapper namespace="com.dostrike.perfectten.DAO.userMapper">
+
+	<insert id="hhReg" parameterType="HH">
+	
+	INSERT INTO HEADHUNTER(
+		
+	  CRN　	
+	　,HHID　	
+　	  ,HHPW　	
+	　,HHNAME　	
+	　,REPRESENTATIVE　	
+	　,PHONE　
+	　,EMAIL　	
+	　,ADDR　	
+	　,LOGINFLAG　	
+	
+	
+	)VALUES(
+	
+	　 　 #{hhId}　
+	　 　 ,#{hhPw}　
+	　 　 ,#{cdn}　
+	　 　 ,#{hhName}　
+	　 　 ,#{representative}　
+	　 　 ,#{phone}　
+	　 　 ,#{addr}　
+	　 　 ,#{hhEmail}　
+	　	,#{loginFlag}　
+	
+	)
+	
+	</insert>
+	
+	<insert id="personReg" parameterType="Person">
+	
+	INSERT INTO PERSON(
+	
+		PERSONID
+		, PERSONPW
+		, PERSONEMAIL
+		, PERSONNAME
+		, LOGINFLAG
+
+	)VALUES(
+	
+		#{personId}
+		,#{personPw}
+		,#{personEmail}
+		,#{personName}
+		,#{loginFlag}
+
+	)
+	
+	</insert>
+	
+	<select id="loginHH" parameterType="Login" resultType="HH">
+	
+		SELECT
+			HHID,
+			HHPW,
+			HHNAME,
+			CRN,
+			REPRESENTATIVE,
+			PHONE,
+			EMAIL,
+			ADDR,
+			LOGINFLAG
+			
+		FROM
+			HEADHUNTER
+		WHERE
+			HHID=#{loginId}
+				AND
+			HHPW=#{loginPw}
+				AND
+			LOGINFLAG=#{loginFlag}
+	
+	</select>
+	
+	<select id="loginPerson" parameterType="Login" resultType="Person">
+		
+		SELECT
+			PERSONID
+			,PERSONPW
+			,PERSONNAME
+			,PERSONEMAIL
+			,LOGINFLAG
+		
+		FROM
+			PERSON
+		WHERE
+			PERSONID=#{loginId}
+				AND
+			PERSONPW=#{loginPw}
+				AND
+			LOGINFLAG=#{loginFlag}
+
+	</select>
+
+</mapper>
