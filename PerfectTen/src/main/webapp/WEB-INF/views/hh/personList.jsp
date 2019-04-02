@@ -37,14 +37,18 @@ function init(){
 			data+='<tr><td>회사 이름</td><td>직업 이름</td><td>구직자 이름</td><td></td><td></td></tr>';
 			
 			$.each(pickList,function(index, item){
-				
-				data+='<tr>';
-				data+='<td>'+item.comName+'</td>';
-				data+='<td>'+item.jobTitle+'</td>';
-				data+='<td>'+item.personName+'</td>';
-				data+='<td><button class="detail-btn" pick-value="'+item.personId+'">이력서 보기</button></td>';
-				data+='<td><button class="contact-btn" name-value="'+item.personName+'" contact-value="'+item.personId+'">컨택하기</button></td>';				
-				data+='</tr>';
+			
+				if (item.status==1) {
+
+					data+='<tr>';
+					data+='<td>'+item.comName+'</td>';
+					data+='<td>'+item.jobTitle+'</td>';
+					data+='<td>'+item.personName+'</td>';
+					data+='<td><button class="detail-btn" pick-value="'+item.personId+'">이력서 보기</button></td>';
+					data+='<td><button class="contact-btn" name-value="'+item.personName+'" contact-value="'+item.personId+'">컨택하기</button></td>';				
+					data+='</tr>';
+					
+				}
 				
 			});// each
 				
