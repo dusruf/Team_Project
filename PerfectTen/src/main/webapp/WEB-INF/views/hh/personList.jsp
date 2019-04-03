@@ -37,7 +37,7 @@ function init(){
 			data+='<tr><td>회사 이름</td><td>직업 이름</td><td>구직자 이름</td><td></td><td></td></tr>';
 			
 			$.each(pickList,function(index, item){
-				
+				.;
 				data+='<tr>';
 				data+='<td>'+item.comName+'</td>';
 				data+='<td>'+item.jobTitle+'</td>';
@@ -45,7 +45,7 @@ function init(){
 				data+='<td><button class="detail-btn" pick-value="'+item.personId+'">이력서 보기</button></td>';
 				if (item.contactFlag==0) {
 					data+='<td><button class="contact-btn" name-value="'+item.personName+'" contact-value="'+item.personId+'">컨택하기</button></td>';				
-				} else{
+				} else {
 					data+='<td>컨택 완료</td>';				
 
 				}
