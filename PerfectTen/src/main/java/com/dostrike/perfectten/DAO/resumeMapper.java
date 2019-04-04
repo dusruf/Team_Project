@@ -26,4 +26,20 @@ public interface resumeMapper {
 
 	int insertCareer(Career career);
 
+	int selectResumeSeq(String loginId);
+
+	ArrayList<TotalResume> selectTotalResume(int resumeSeq);
+
+	BasicInfo selectBasicInfo(int resumeSeq);
+
+	ArrayList<Ability> selectAbility(int resumeSeq);
+
+	ArrayList<Activity> selectActivity(int resumeSeq);
+
+	ArrayList<Certificate> selectCerti(int resumeSeq);
+
+	ArrayList<LanguageScore> selectLanguage(int resumeSeq);
+
+	ArrayList<Career> selectCareer(int resumeSeq);
+
 }

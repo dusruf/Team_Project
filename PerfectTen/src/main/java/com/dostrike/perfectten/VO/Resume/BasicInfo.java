@@ -1,7 +1,5 @@
 package com.dostrike.perfectten.VO.Resume;
 
-import java.util.ArrayList;
-
 public class BasicInfo {
 
 	private int resumeSeq;

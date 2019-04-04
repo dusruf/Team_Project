@@ -1,5 +1,6 @@
 package com.dostrike.perfectten.controller;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dostrike.perfectten.DAO.ResumeDAO;
 import com.dostrike.perfectten.VO.Resume.Ability;
@@ -24,6 +26,8 @@ public class ResumeController {
 
 	@Autowired
 	ResumeDAO dao;
+	
+	TotalResume totalResume = new TotalResume();
 	
 	@RequestMapping(value="/insertResume", method=RequestMethod.POST)
 	public String insertResume(TotalResume totalResume, HttpSession session) {
@@ -87,7 +91,7 @@ public class ResumeController {
 			
 			abilityList=totalResume.getAbilityList();
 			
-			System.out.println("insertAList : "+abilityList);
+			System.out.println("insertAbilityList : "+abilityList);
 			
 			boolean flag = false;
 			
@@ -144,7 +148,7 @@ public class ResumeController {
 			
 			activityList=totalResume.getActivityList();
 			
-			System.out.println("insertAList : "+activityList);
+			System.out.println("insertAbilityList : "+activityList);
 			
 			boolean flag = false;
 			
@@ -201,7 +205,7 @@ public class ResumeController {
 			
 			certificateList=totalResume.getCertificateList();
 
-			System.out.println("insertAList : "+certificateList);
+			System.out.println("insertCertificateList : "+certificateList);
 			
 			boolean flag = false;
 			
@@ -273,7 +277,7 @@ public class ResumeController {
 			
 			careerList=totalResume.getCareerList();
 
-			System.out.println("insertcareerList : "+careerList);
+			System.out.println("insertCareerList : "+careerList);
 			
 			boolean flag = false;
 			
@@ -295,11 +299,159 @@ public class ResumeController {
 			
 		}//certificateNum if else
 		
-		System.out.println("totalResume 확인");
+		//LanguageScore
+
+		List<String> languageNum=totalResume.getLanguageTitle();
+		
+		if (languageNum!=null) {
+
+			ArrayList<LanguageScore> langList=new ArrayList<LanguageScore>();
+			totalResume.setLanguageScoreList(langList);
+			
+			System.out.println("for문 이전 totalResume : "+totalResume);
+			
+			for(int i=0;i<languageNum.size();i++) {
+				 
+				String languageType=totalResume.getLanguageType().get(i);				
+				String languageTitle=totalResume.getLanguageTitle().get(i);
+				String languageScore=totalResume.getLanguageScore().get(i);
+				String languageOrg=totalResume.getLanguageOrg().get(i);
+				String languageDate=totalResume.getLanguageDate().get(i);
+				
+				LanguageScore language=new LanguageScore();
+				
+				language.setResumeSeq(resumeSeq);
+				language.setLanguageType(languageType);
+				language.setLanguageTitle(languageTitle);
+				language.setLanguageScore(languageScore);
+				language.setLanguageOrg(languageOrg);
+				language.setLanguageDate(languageDate);
+				
+				totalResume.getLanguageScoreList().add(language);
+				
+				System.out.println("language : "+language);
+				
+			}// activity setting for
+			
+			System.out.println("for 문 이후 totalResume : "+totalResume);
+			
+			ArrayList<LanguageScore> languageScoreList=new ArrayList<LanguageScore>();
+			
+			languageScoreList=totalResume.getLanguageScoreList();
+
+			System.out.println("insertlanguageScoreList : "+languageScoreList);
+			
+			boolean flag = false;
+			
+			for (int i = 0; i < languageScoreList.size(); i++) {
+				int languageResult=dao.insertLanguageScore(languageScoreList.get(i));
+				
+				System.out.println(languageResult);
+				if(languageResult==1) flag=true;
+				else flag=false;
+				
+			}
+			
+			System.out.println("최종 결과 : "+flag);
+			
+                                                                                                                                        			
+		} else {
+			
+			System.out.println("language 속성 없음");
+			
+		}//certificateNum if else
+		
+		
+		System.out.println("totalResume 최종  final 확인");
 		System.out.println(totalResume);	
 		
 		return "person/personMain";
-	
+		
 	}//insertResume
+	
+	@RequestMapping(value="/checkResume", method=RequestMethod.GET)
+	public @ResponseBody int checkResume(String loginId){
+	
+		int resumeSeq=dao.selectResumeSeq(loginId);
+		System.out.println(resumeSeq);
 
+		return resumeSeq;
+	}	
+	
+	@RequestMapping(value="/selectBasicInfo", method=RequestMethod.GET)
+	public @ResponseBody BasicInfo selectBasicInfo(int resumeSeq){
+	
+		BasicInfo bi = new BasicInfo();
+		
+		totalResume=dao.selectTotalResume(resumeSeq);
+		
+		bi.setResumeSeq(resumeSeq);
+		bi.setPersonId(totalResume.getPersonId());
+		
+		bi.setBasicSeq(totalResume.getBasicSeq());
+		bi.setPersonName(totalResume.getPersonName());
+		bi.setBirthDate(totalResume.getBirthDate());
+		bi.setGender(totalResume.getGender());
+		bi.setPersonEmail(totalResume.getPersonEmail());
+		bi.setPersonPhone(totalResume.getPersonPhone());
+		bi.setPersonAddr(totalResume.getPersonAddr());
+		
+		System.out.println("ResumeController bi : "+bi);
+		
+		return bi;
+
+	}
+
+	@RequestMapping(value="/selectCareer", method=RequestMethod.GET)
+	public @ResponseBody ArrayList<Career> selectCareer(int resumeSeq){
+
+		ArrayList<Career> careerList=totalResume.getCareerList();		
+		System.out.println("컨트롤러 careerList 확인 : "+careerList);
+		
+		return careerList;
+	}
+	
+	@RequestMapping(value="/selectCerti", method=RequestMethod.GET)
+	public @ResponseBody ArrayList<Certificate> selectCerti(int resumeSeq){
+	
+		ArrayList<Certificate> certiList=totalResume.getCertificateList();
+		System.out.println("컨드롤러 certiList 확인 : "+certiList);
+	
+		return certiList;
+	}
+
+	@RequestMapping(value="/selectLanguageScore", method=RequestMethod.GET)
+	public @ResponseBody ArrayList<LanguageScore> selectLanguageScore(int resumeSeq){
+	
+		ArrayList<LanguageScore> languageScoreList=totalResume.getLanguageScoreList();
+		System.out.println("컨드롤러 languageScoreList 확인 : "+languageScoreList);
+	
+		return languageScoreList;
+	}
+	
+	@RequestMapping(value="/selectAbility", method=RequestMethod.GET)
+	public @ResponseBody ArrayList<Ability> selectAbility(int resumeSeq){
+	
+		ArrayList<Ability> abilityList=totalResume.getAbilityList();
+		System.out.println("컨드롤러 AbilityList 확인 : "+abilityList);
+	
+		return abilityList;
+	}
+	
+	@RequestMapping(value="/selectActivity", method=RequestMethod.GET)
+	public @ResponseBody ArrayList<Activity> selectActivity(int resumeSeq){
+	
+		ArrayList<Activity> activityList=totalResume.getActivityList();
+		System.out.println("컨드롤러 activityList 확인 : "+activityList);
+	
+		return activityList;
+	}
+	
+	@RequestMapping(value="/updateResume", method=RequestMethod.GET)
+	public String updateResume(){
+		
+		return "";
+	}
+	
+	
 }//class

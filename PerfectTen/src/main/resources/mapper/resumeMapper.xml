@@ -183,5 +183,58 @@
 		)
 	
 	</insert>
+	
+	<select id="selectResumeSeq" parameterType="String" resultType="int">
+	
+	SELECT
+		RESUMESEQ
+	FROM
+		RESUMEMAIN
+	WHERE
+		PERSONID=#{loginId}
+	
+	</select>
+
+	<select id="selectBasicInfo" parameterType="int" resultType="BasicInfo">
+	
+	SELECT * FROM BASICINFO
+	WHERE RESUMESEQ=#{resumeSeq}
+	
+	</select>
+
+	<select id="selectCareer" parameterType="int" resultType="Career">
+	
+	SELECT * FROM CAREER
+	WHERE RESUMESEQ=#{resumeSeq}
+	
+	</select>  
+	
+	<select id="selectCerti" parameterType="int" resultType="Certificate">
+	
+	SELECT * FROM CERTI
+	WHERE RESUMESEQ=#{resumeSeq}
+	
+	</select>
+
+	<select id="selectLanguage" parameterType="int" resultType="LanguageScore">
+	
+	SELECT * FROM LANGUAGESCORE
+	WHERE RESUMESEQ=#{resumeSeq}
+	
+	</select>
+
+	<select id="selectAbility" parameterType="int" resultType="Ability">
+	
+	SELECT * FROM Ability
+	WHERE RESUMESEQ=#{resumeSeq}
+	
+	</select>
+	
+	<select id="selectActivity" parameterType="int" resultType="Activity">
+	
+	SELECT * FROM Activity
+	WHERE RESUMESEQ=#{resumeSeq}
+	
+	</select>
 
 </mapper>

@@ -111,5 +111,68 @@ public class ResumeDAO {
 		return result;
 	
 	}
+
+	public int selectResumeSeq(String loginId) {
+		resumeMapper mapper=session.getMapper(resumeMapper.class);
+		int resumeSeq=0;
+
+		try {
+			
+			resumeSeq=mapper.selectResumeSeq(loginId);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return resumeSeq;
+	}
+
+	public TotalResume selectTotalResume(int resumeSeq) {
+		resumeMapper mapper=session.getMapper(resumeMapper.class);
+
+		TotalResume totalResume = new TotalResume();
+		
+		try {
+			
+			BasicInfo basicInfo = new BasicInfo();
+			ArrayList<Ability> abilityList =new ArrayList<Ability>();
+			ArrayList<Activity> activityList =new ArrayList<Activity>();
+			ArrayList<Certificate> certiList =new ArrayList<Certificate>();
+			ArrayList<LanguageScore> languageList =new ArrayList<LanguageScore>();
+			ArrayList<Career> careerList =new ArrayList<Career>();
+			
+			basicInfo=mapper.selectBasicInfo(resumeSeq);
+
+			
+			abilityList=mapper.selectAbility(resumeSeq);
+			activityList=mapper.selectActivity(resumeSeq);
+			certiList=mapper.selectCerti(resumeSeq);
+			languageList=mapper.selectLanguage(resumeSeq);
+			careerList=mapper.selectCareer(resumeSeq);
+			
+		
+			totalResume.setResumeSeq(resumeSeq);
+			totalResume.setPersonId(basicInfo.getPersonId());
+			
+			totalResume.setBasicSeq(basicInfo.getBasicSeq());
+			totalResume.setPersonName(basicInfo.getPersonName());
+			totalResume.setBirthDate(basicInfo.getBirthDate());
+			totalResume.setGender(basicInfo.getGender());
+			totalResume.setPersonEmail(basicInfo.getPersonEmail());
+			totalResume.setPersonPhone(basicInfo.getPersonPhone());
+			totalResume.setPersonAddr(basicInfo.getPersonAddr());
+			
+			totalResume.setAbilityList(abilityList);
+			totalResume.setActivityList(activityList);
+			totalResume.setCertificateList(certiList);
+			totalResume.setLanguageScoreList(languageList);
+			totalResume.setCareerList(careerList);		
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return totalResume;
+	}
 	
 }//class
