@@ -25,12 +25,12 @@ public class PersonController {
 	
 		return "person/resume";
 	
-	}
+	} 
 	
-	@RequestMapping(value = "/resumeUpdate", method = RequestMethod.GET)
+	@RequestMapping(value = "/showResume", method = RequestMethod.GET)
 	public String resumeUpdate() {
 	
-		return "person/resume";
+		return "person/showResume";
 	
 	}
 

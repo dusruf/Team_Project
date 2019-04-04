@@ -30,25 +30,26 @@ function init(){
 			var data="";
 			
 			if (cmList!=null){ //여기 질문하기 응답 후 메세지 없음이 떠야 함
-								
+				data+='<table border="1">';
+				data+='<tr><td>메세지 제목</td><td>헤드헌터</td><td>보낸 날짜</td><td></td></tr>';
+							
 				$.each(cmList,function(index,item){
 				
 					if (item.cmStatus==0) {//아직 응답하지 않은 cm만 출력
 											
-						data+='<table border="1">';
-						data+='<tr><td>메세지 제목</td><td>헤드헌터</td><td>보낸 날짜</td><td></td></tr>';
-						data+='<tr>'
+					data+='<tr>'
 						data+='<td>'+item.contactTitle+'</td>';
 						data+='<td>'+item.hhName+'</td>';
 						data+='<td>'+item.cmIndate+'</td>';
 						data+='<td><button class="cm-btn" cmSeq-value="'+item.cmSeq+'">자세히 보기</button></td>';				
 						data+='</tr>';	
-						data+='</table>';
 						
 					}
 					
 				});//each
-				
+
+				data+='</table>';
+
 			} else {				
 				data+='<h3>메세지 없음</h3>';				
 			}

@@ -47,6 +47,7 @@ function output(qna){
 	info+='<table id="boardTable">';
 	info+='<tr><td>제목 : </td><td>'+qna[0].TITLE+'</td></tr>';
 	info+='<tr><td>게시일 : </td><td>'+qna[0].INDATE+'</td></tr>';
+	info+='<tr><td>내용 : </td><td>'+qna[0].CONTENTS+'</td></tr>';
 	info+='</table>';	
 	info+='<hr>';
 	
@@ -111,9 +112,6 @@ function insertComment(){
 </head>
 <body>
 
-<div>
-<h1>test1</h1>
-</div>
 
 <!-- 게시글 출력하는  div -->
 <div id="contentDiv">

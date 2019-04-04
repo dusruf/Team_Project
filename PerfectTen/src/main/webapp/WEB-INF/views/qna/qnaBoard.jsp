@@ -46,14 +46,13 @@ function init(){
 function output(resp){
 	
 	var data='<table class="qnaTable">';
-	var data='<tr><td>제목</td><td>ID</td><td>조회수</td><td>등록일</td></tr>';
+	var data='<tr><td>제목</td><td>ID</td><td>등록일</td></tr>';
 	
 	$.each(resp, function(index, item){
 
 		data+='<tr>';		
 		data+='<td><a href="qnaDetail?qBoardSeq='+item.qBoardSeq+'">'+item.title+'</a></td>';
 		data+='<td>'+item.personId+'</td>';
-		data+='<td>'+item.hitcount+'</td>';
 		data+='<td>'+item.indate+'</td>';
 		data+='</tr>';		
 		

@@ -13,9 +13,7 @@
 		PERSONID,
 		TITLE,
 		CONTENTS,
-		HITCOUNT,
-		INDATE,
-		SECRETFLAG
+		INDATE
 	FROM
 		QNABOARD
 	ORDER BY
@@ -31,9 +29,7 @@
     ,PERSONID
     ,TITLE
     ,CONTENTS
-    ,HITCOUNT
     ,INDATE
-    ,SECRETFLAG
 
 	)VALUES(
 
@@ -41,9 +37,7 @@
 	,#{personId}
 	,#{title}
 	,#{contents}
-	,0
 	,SYSDATE
-	,0
 	
 	)
 
@@ -55,9 +49,7 @@
 		,board.personid as personid
 		,board.title as title
 		,board.contents as contents
-		,board.hitcount as hitcount
 		,TO_CHAR(board.indate, 'YYYY-MM-DD HH24:MI') as indate
-		,board.secretflag as secretflag
 		,cmt.commentseq as commentseq
 		,cmt.hhname as hhname 
 		,cmt.comments as comments

@@ -34,10 +34,10 @@ function init(){
 			var data='';
 			
 			data+='<table border="1">';
-			data+='<tr><td>회사 이름</td><td>직업 이름</td><td>구직자 이름</td><td></td><td></td></tr>';
+			data+='<tr><td>회사 이름</td><td>직업 이름</td><td>구직자 이름</td><td></td><td></td><td></td><td></td></tr>';
 			
 			$.each(pickList,function(index, item){
-				.;
+				
 				data+='<tr>';
 				data+='<td>'+item.comName+'</td>';
 				data+='<td>'+item.jobTitle+'</td>';
@@ -45,10 +45,26 @@ function init(){
 				data+='<td><button class="detail-btn" pick-value="'+item.personId+'">이력서 보기</button></td>';
 				if (item.contactFlag==0) {
 					data+='<td><button class="contact-btn" name-value="'+item.personName+'" contact-value="'+item.personId+'">컨택하기</button></td>';				
+					
 				} else {
-					data+='<td>컨택 완료</td>';				
-
+					data+='<td>메세지 전송</td>';				
+					
 				}
+				if (item.status==1) {
+					
+					data+='<td>미응답</td>';
+
+				} else if(item.status==0){
+					
+					data+='<td>요청 거절</td>';
+					data+='<td><input type="button" class="delete-btn" value="목록 삭제"></td>';
+					
+				} else if(item.status==2){
+					
+					data+='<td>요청 수락</td>';					
+					data+='<td><input type="button" class="chat-btn" value="1:1 채팅"></td>';
+				}
+				
 				data+='</tr>';
 				
 			});// each

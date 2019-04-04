@@ -19,9 +19,9 @@ $(function(){
 
 	});//resumeReg on click
 
-	$("#resumeUpdate").on("click",function(){
+	$("#showResume").on("click",function(){
 		
-		$("#resumeUpdateForm").submit();
+		$("#showResumeForm").submit();
 
 	});//resumeUpdate on click	
 	
@@ -51,9 +51,9 @@ $(function(){
 </div>
 </form>
 
-<form id="resumeUpdateForm" action="resumeUpdate" method="get">
-<div id="resumeUpdate">
-<h1>이력서 관리</h1>
+<form id="showResumeForm" action="showResume" method="get">
+<div id="showResume">
+<h1>이력서 보기</h1>
 </div>
 </form>
 
