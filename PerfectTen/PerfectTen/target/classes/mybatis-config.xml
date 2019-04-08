@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.dostrike.perfectten.VO.HeadHunter" alias="HH" />
+		<typeAlias type="com.dostrike.perfectten.VO.Person" alias="Person" />
+		<typeAlias type="com.dostrike.perfectten.VO.Login" alias="Login" />
+		<typeAlias type="com.dostrike.perfectten.VO.QnaBoard" alias="QnaBoard" />
+		<typeAlias type="com.dostrike.perfectten.VO.QnaComment" alias="QnaComment" />
+		<typeAlias type="com.dostrike.perfectten.VO.Request" alias="Request" />
+		<typeAlias type="com.dostrike.perfectten.VO.Options" alias="Options" />
+		<typeAlias type="com.dostrike.perfectten.VO.PersonList" alias="PersonList" />
+		
+		<typeAlias type="com.dostrike.perfectten.VO.ContactMessage" alias="ContactMessage" />
+
+		<typeAlias type="com.dostrike.perfectten.VO.Resume.TotalResume" alias="TotalResume" />
+		<typeAlias type="com.dostrike.perfectten.VO.Resume.BasicInfo" alias="BasicInfo" />
+		<typeAlias type="com.dostrike.perfectten.VO.Resume.Ability" alias="Ability" />
+		<typeAlias type="com.dostrike.perfectten.VO.Resume.Activity" alias="Activity" />
+		<typeAlias type="com.dostrike.perfectten.VO.Resume.Certificate" alias="Certificate" />
+		<typeAlias type="com.dostrike.perfectten.VO.Resume.LanguageScore" alias="LanguageScore" />
+		<typeAlias type="com.dostrike.perfectten.VO.Resume.Career" alias="Career" />
+	
+		
+	</typeAliases>
+	<mappers>
+		<mapper resource="mapper/userMapper.xml" />
+		<mapper resource="mapper/hhMapper.xml" />
+		<mapper resource="mapper/personMapper.xml" />
+		<mapper resource="mapper/qnaMapper.xml" />
+		<mapper resource="mapper/resumeMapper.xml" />
+		
+	</mappers>
+</configuration>
