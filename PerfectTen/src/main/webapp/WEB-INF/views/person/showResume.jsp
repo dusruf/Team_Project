@@ -159,7 +159,7 @@ function init(){
 													
 													$.each(languageScoreList, function(index,item){												
 														
-														langData+='<table><tr>';
+														langData+='<table border="1"><tr>';
 														langData+='<td>언어</td><td>'+item.languageType+'</td>';
 														langData+='</tr><tr>';
 														langData+='<td>시험</td><td>'+item.languageTitle+'</td>';
@@ -287,7 +287,7 @@ function button(){
 		
 	var btnData="";
 	btnData+='<form action="updateResume" method="get">';
-	btnData+='<input type="button" value="이력서 수정">';
+	btnData+='<input type="submit" value="이력서 수정">';
 	btnData+='</form>';
 	
 	$("#buttonDiv").html(btnData);

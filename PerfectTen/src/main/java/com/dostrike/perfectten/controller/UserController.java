@@ -65,11 +65,13 @@ public class UserController {
 			if (hh!=null) {
 				
 				int loginFlag=hh.getLoginFlag();
+				String loginId=hh.getHhId();
 				String hhId=hh.getHhId();
 				String hhName=hh.getHhName();
 				
 				
 				session.setAttribute("loginFlag", loginFlag);
+				session.setAttribute("loginId", loginId);
 				session.setAttribute("hhId", hhId);
 				session.setAttribute("hhName", hhName);
 				

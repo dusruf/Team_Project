@@ -166,6 +166,24 @@ public class HHDAO {
 		
 		return finalResult;		
 	}
+
+	public ArrayList<PersonList> selectContactedPerson(String hhId) {
+		
+		hhMapper mapper=session.getMapper(hhMapper.class);
+		ArrayList<PersonList> cpList=new ArrayList<PersonList>();
+
+		try {
+			
+			cpList=mapper.selectContactedPerson(hhId);
+			System.out.println("DAO cpList : "+cpList);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return cpList;
+	}
 	
 
 }//class

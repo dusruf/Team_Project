@@ -169,7 +169,8 @@ public class HHController {
 		String loginId=(String)session.getAttribute("loginId");
 		personList.setHhId(loginId);
 		
-		System.out.println(personList);
+		System.out.println("컨드롤러 hhId : "+loginId);
+		System.out.println("컨트롤러 personList : "+personList);
 		
 		result=dao.pickPerson(personList);			
 		
@@ -219,6 +220,18 @@ public class HHController {
 		
 		return result;
 	}
-
+	
+	@RequestMapping(value = "/selectContactedPerson", method = RequestMethod.GET)
+	public @ResponseBody ArrayList<PersonList> selectContactedPerson(HttpSession session) { //임시로 만든 것임 수정 필수
+	
+		ArrayList<PersonList> cpList=new ArrayList<PersonList>();
+		String hhId=(String)session.getAttribute("hhId");
+		
+		cpList=dao.selectContactedPerson(hhId);
+		System.out.println("컨트롤러 cpList : "+cpList); 
+		
+		return cpList;
+		
+	}
 	
 }// class

@@ -59,7 +59,7 @@ $(function(){
 </form>
 
 <form id="statusCheckForm" action="statusCheck" method="get">
-<div id="statusCheck"><h1>진행 상황</h1></div>
+<div id="statusCheck"><h1>컨택 인재</h1></div>
 </form>
 
 <form id="personListForm" action="goPersonList" method="get">

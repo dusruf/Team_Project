@@ -29,6 +29,8 @@ public interface hhMapper {
 
 	int updateContactFlag(HashMap<String, String> contactFlagMap);
 
+	ArrayList<PersonList> selectContactedPerson(String hhId);
+
 
 
 }

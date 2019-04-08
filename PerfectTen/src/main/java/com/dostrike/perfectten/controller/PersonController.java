@@ -33,7 +33,14 @@ public class PersonController {
 		return "person/showResume";
 	
 	}
-
+	/*
+	@RequestMapping(value = "/showResume", method = RequestMethod.GET)
+	public String resumeUpdate() {
+	
+		return "person/showResume";
+	
+	}
+	*/
 	
 	@RequestMapping(value = "/goStatus", method = RequestMethod.GET)
 	public String goStatus() {

@@ -139,6 +139,8 @@
 	    
 	FROM
 		PERSONLIST 
+	WHERE
+		HHID=#{hhId}
  
  </select>
  
@@ -184,5 +186,11 @@
  
  </update>
  
+ <select id="selectContactedPerson" parameterType="String" resultType="PersonList">
+ 
+ SELECT * FROM PERSONLIST 
+ WHERE HHID=#{hhId} AND STATUS=2
+ 
+ </select>
  
 </mapper>

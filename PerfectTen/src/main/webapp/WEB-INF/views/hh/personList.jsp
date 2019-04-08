@@ -34,7 +34,7 @@ function init(){
 			var data='';
 			
 			data+='<table border="1">';
-			data+='<tr><td>회사 이름</td><td>직업 이름</td><td>구직자 이름</td><td></td><td></td><td></td><td></td></tr>';
+			data+='<tr><td>회사 이름</td><td>직업 이름</td><td>구직자 이름</td><td></td><td></td><td></td><td></td><td></td></tr>';
 			
 			$.each(pickList,function(index, item){
 				
@@ -56,13 +56,15 @@ function init(){
 
 				} else if(item.status==0){
 					
-					data+='<td>요청 거절</td>';
+					data+='<td>요청 거절</td><td></td>';
 					data+='<td><input type="button" class="delete-btn" value="목록 삭제"></td>';
 					
 				} else if(item.status==2){
 					
 					data+='<td>요청 수락</td>';					
-					data+='<td><input type="button" class="chat-btn" value="1:1 채팅"></td>';
+					data+='<td><input type="button" class="chat-btn" value="컨택 목록 가기"></td>';
+					data+='<td><input type="button" class="delete-btn" value="목록 삭제"></td>';
+
 				}
 				
 				data+='</tr>';
