@@ -52,6 +52,23 @@
 
 <div id="totalDiv">
 
+<c:if test="${resumeSeq==0}">
+
+<div id="nullDiv">
+
+<h3>등록된 이력서가 없습니다.</h3>
+
+<input type="button" value="이력서 등록" onClick="location.href ='regResume';">
+
+</form>
+
+</div>
+
+</c:if>
+
+<c:if test="${resumeSeq!=0}">
+
+
 <div id="basicInfoDiv">
 
 	<h3>기본 정보</h3>
@@ -173,6 +190,8 @@
 <input type="hidden" name="resumeSeq" value="${bi.resumeSeq}">
 <input type="submit" value="이력서 수정">
 </form>
+
+</c:if>
 
 </body>
 </html>

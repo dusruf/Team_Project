@@ -33,9 +33,12 @@ public class ResumeController {
 
 		if (updateFlag==1) {
 			System.out.println("까꿍 : "+updateFlag);
+		
+		
 		}
 		
 		System.out.println("이력서 입력 시작");
+		System.out.println("updateFlag : "+updateFlag);
 		System.out.println("최초 실행 : "+totalResume);		
 		
 		int resumeSeq=totalResume.getResumeSeq();
@@ -123,6 +126,63 @@ public class ResumeController {
 			System.out.println("ability 속성 없음");
 			
 		}//abilityNum if else
+		
+		//Education
+		/*
+		List<String> educationNum=totalResume.getEducationFlag();
+		
+		if (educationNum!=null) {
+
+			ArrayList<Activity> acList=new ArrayList<Activity>();
+			totalResume.setActivityList(acList);
+			
+			System.out.println("for문 이전 totalResume : "+totalResume);
+			
+			for(int i=0;i<educationNum.size();i++) {
+				
+				String title=totalResume.getActivityTitle().get(i);
+				String org=totalResume.getActivityOrg().get(i);
+				String detail=totalResume.getActivityDetails().get(i);
+				
+				Activity activity=new Activity();
+				
+				activity.setResumeSeq(resumeSeq);
+				activity.setActivityTitle(title);
+				activity.setActivityOrg(org);
+				activity.setActivityDetails(detail);
+				totalResume.getActivityList().add(activity);
+				
+				System.out.println("activity : "+activity);
+				
+			}// activity setting for
+			
+			System.out.println("for 문 이후 totalResume : "+totalResume);
+			
+			ArrayList<Activity> activityList = new ArrayList<Activity>();
+			
+			activityList=totalResume.getActivityList();
+			
+			System.out.println("insertAbilityList : "+activityList);
+			
+			boolean flag = false;
+			
+			for (int i = 0; i < activityList.size(); i++) {
+				int activityResult=dao.insertActivity(activityList.get(i));
+				
+				if(activityResult==1) flag=true;
+				else flag=false;
+				
+			}
+			
+			System.out.println("최종 결과 : "+flag);
+			
+                                                                                                                                        			
+		} else {
+			
+			System.out.println("activity 속성 없음");
+			
+		}//activityNum if else
+		*/
 		
 		
 		//ACTIVITY
@@ -386,10 +446,12 @@ public class ResumeController {
 	
 		//(필바꿈)
 		//로그인 구현하고 세션값으로 바꾸기
-		//String personId=(String)session.~~~;
-		String personId="22";
+		String personId=(String)session.getAttribute("personId");
 		
 		int resumeSeq=dao.selectResumeSeq(personId);
+		
+		model.addAttribute("resumeSeq",resumeSeq);
+		
 		System.out.println(resumeSeq);
 
 		TotalResume totalResume = new TotalResume();

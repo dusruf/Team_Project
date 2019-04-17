@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8"%>
-<!doctype html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" language="java"%>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -84,8 +85,8 @@ function button(){
 	
 }//function button
 
-function edu1(){
-		
+function showEdu1(){
+	
 	var data="";
 	data+='<br>';
 	data+='<input type="hidden" name="educationFlag" value="1">';
@@ -93,14 +94,17 @@ function edu1(){
 	data+='전공 계열 : <input type="text" name="major"><br>';
 	data+='재학기간 : <input type="date" name="eduStartDate">~';
 	data+='<input type="date" name="eduEndDate"><br>';	
-
-	$("#educationDiv").append(data);
-
+	data+='<input type="button" id="addEdu1" value="＋학력추가" style="margin-left: 37.6%;">';
+//	data+='<input type="button" id="test" value="test">';b 
+	 
+	$("#educationDiv").html(data);
+	$("#addEdu1").on("click",edu1);
 	
 }
 
-function edu2(){
 
+function showEdu2(){
+	
 	var data="";
 	data+='<br>';
 	data+='<input type="hidden" name="educationFlag" value="2">';
@@ -108,13 +112,15 @@ function edu2(){
 	data+='전공 : <input type="text" name="major"><br>';
 	data+='재학기간 : <input type="date" name="eduStartDate">~';
 	data+='<input type="date" name="eduEndDate"><br>';	
-	data+='<input type="button" id="abilityty" value="＋학력추가" onclick="edu2()" style="margin-left: 37.6%;">';
-
-	$("#educationDiv").append(data);
+	data+='<input type="button" id="addEdu2" value="＋학력추가" style="margin-left: 37.6%;">';
+//	data+='<input type="button" id="addEdu'+2+' value="+학력추가">';
 	
+	$("#educationDiv").html(data);
+	$("#addEdu2").on("click",edu2);
+
 }
 
-function edu3(){
+function showEdu3(){
 	
 	var data="";
 	data+='<br>';
@@ -123,15 +129,19 @@ function edu3(){
 	data+='전공 : <input type="text" name="major"><br>';
 	data+='재학기간 : <input type="date" name="eduStartDate">~';
 	data+='<input type="date" name="eduEndDate"><br>';	
-	data+='<input type="button" value="+학력 추가">';
+//	data+='<input type="button" value="+학력 추가">';
+	data+='<input type="button" id="addEdu3" value="＋학력추가" style="margin-left: 37.6%;">';
 	
 	$("#educationDiv").html(data);
+	$("#addEdu3").on("click",edu3);
 	
 }
 
-function edu4(){
-	
+function showEdu4(){
+
 	var data="";
+	
+//	data+='(이게 붙는게 맞나)';
 	data+='<br>';
 	data+='<input type="hidden" name="educationFlag" value="4">';
 	data+='학교명 : <input type="text" name="schoolName"><br>';
@@ -142,9 +152,103 @@ function edu4(){
 	data+='<option value="박사">박사</option></select><br>';
 	data+='재학기간 : <input type="date" name="eduStartDate">~';
 	data+='<input type="date" name="eduEndDate"><br>';	
-	data+='<input type="button" value="+학력 추가">';
+	data+='<input type="button" id="addEdu4" value="＋학력추가" style="margin-left: 37.6%;">';
 	
 	$("#educationDiv").html(data);
+	$("#addEdu4").on("click",edu4);
+
+}
+
+//var edu1_cnt=0;
+
+function edu1(){
+		
+	var data="";
+	
+	education_cnt++;
+	
+	data+='<div id="eduDiv'+education_cnt+'">';
+	data+='<br>';
+	data+='<input type="hidden" name="educationFlag" value="1">';
+	data+='학교명 : <input type="text" name="schoolName"><br>';
+	data+='전공 계열 : <input type="text" name="major"><br>';
+	data+='재학기간 : <input type="date" name="eduStartDate">~';
+	data+='<input type="date" name="eduEndDate"><br>';	
+	data+='<input type="button" class="deleteEdu1" del_value="eduDiv'+education_cnt+'" value="삭제">';
+	data+='</div>';
+	
+	$("#educationDiv").append(data);
+	$(".deleteEdu1").on("click",deleteDiv);
+
+//	activityContent+='<input type="button" id="abilityty" del_value="activityDiv'+activity_cnt+'" class="deleteActivity" value="대외활동삭제">';
+
+	
+}
+
+function edu2(){
+
+	var data="";
+
+	education_cnt++;
+	
+	data+='<div id="eduDiv'+education_cnt+'">';
+	data+='<br>';
+	data+='<input type="hidden" name="educationFlag" value="2">';
+	data+='학교명 : <input type="text" name="schoolName"><br>';
+	data+='전공 : <input type="text" name="major"><br>';
+	data+='재학기간 : <input type="date" name="eduStartDate">~';
+	data+='<input type="date" name="eduEndDate"><br>';	
+	data+='<input type="button" id="deleteEdu1" value="삭제">';
+
+	data+='</div>';
+	
+	$("#educationDiv").append(data);
+	
+}
+
+function edu3(){
+	
+	var data="";
+
+	education_cnt++;
+	
+	data+='<div id="eduDiv'+education_cnt+'">';
+	data+='<br>';
+	data+='<input type="hidden" name="educationFlag" value="3">';
+	data+='학교명 : <input type="text" name="schoolName"><br>';
+	data+='전공 : <input type="text" name="major"><br>';
+	data+='재학기간 : <input type="date" name="eduStartDate">~';
+	data+='<input type="date" name="eduEndDate"><br>';	
+	data+='<input type="button" id="deleteEdu1" value="삭제">';
+
+	data+='</div>';
+	
+	$("#educationDiv").append(data);
+	
+}
+
+function edu4(){
+	
+	var data="";
+
+	education_cnt++;
+	
+	data+='<div id="eduDiv'+education_cnt+'">';
+	data+='<br>';
+	data+='<input type="hidden" name="educationFlag" value="4">';
+	data+='학교명 : <input type="text" name="schoolName"><br>';
+	data+='전공 : <input type="text" name="major"><br>';
+	data+='학위 :<select name="diploma">';
+	data+='<option value="석사">석사</option>';
+	data+='<option value="석박사">석박사</option>';
+	data+='<option value="박사">박사</option></select><br>';
+	data+='재학기간 : <input type="date" name="eduStartDate">~';
+	data+='<input type="date" name="eduEndDate"><br>';	
+	data+='<input type="button" id="deleteEdu1" value="삭제">';
+
+	data+='</div>';
+	
+	$("#educationDiv").append(data);
 	
 }
 
@@ -169,10 +273,10 @@ function addEducation(){
  
 	$("#eduInfoDiv").html(educationContent);
 	
-	$("#edu1").on("click", edu1);
-	$("#edu2").on("click", edu2);
-	$("#edu3").on("click", edu3);
-	$("#edu4").on("click", edu4);
+	$("#edu1").on("click", showEdu1);
+	$("#edu2").on("click", showEdu2);
+	$("#edu3").on("click", showEdu3);
+	$("#edu4").on("click", showEdu4);
 	
 	/*
 	educationContent+='<br>학력 정보<table border="1"><tr>';
@@ -485,6 +589,7 @@ function addAbility(){
 		<div id="totalEduDiv">
 		<div id="eduInfoDiv"></div>
 	
+		<input type="hidden" name="updateFlag" value="0">
 		
 			<!-- 학력정보 스타트-->
 			<!-- 
@@ -689,7 +794,7 @@ function addAbility(){
 </div>    
  --%>
  
-
+  
 
 <hr>
 
