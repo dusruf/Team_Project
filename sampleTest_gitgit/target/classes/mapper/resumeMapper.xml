@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 게시판 처리 SQL -->
+<mapper namespace="com.sample.test.dao.resumeMapper">
+
+	<insert id="insertResumeMain" parameterType="TotalResume">
+	
+	INSERT INTO RESUMEMAIN(
+	
+		RESUMESEQ
+		, PERSONID
+	
+	)VALUES(
+		
+		#{resumeSeq}
+		,#{personId}
+	)
+		
+	</insert>
+
+
+	<insert id="insertBasicInfo" parameterType="TotalResume">
+
+		<selectKey keyProperty="resumeSeq" resultType="int"
+			order="BEFORE">
+
+			SELECT RESUMESEQ.NEXTVAL FROM DUAL
+
+		</selectKey>
+
+		INSERT INTO BASICINFO(
+
+		BASICSEQ
+		,RESUMESEQ
+		,PERSONID
+		,PERSONNAME
+		,BIRTHDATE
+		,GENDER
+		,PERSONEMAIL
+		,PERSONPHONE
+		,PERSONADDR
+
+		)VALUES(
+
+		BASICSEQ.NEXTVAL
+		,#{resumeSeq}
+		,#{personId}
+		,#{personName}
+		,#{birthDate}
+		,#{gender}
+		,#{personEmail}
+		,#{personPhone}
+		,#{personAddr}
+
+		)
+
+	</insert>
+
+	<insert id="insertEducation" parameterType="Education">
+		INSERT INTO EDUCATION(
+			
+	  		educationSeq 
+	        ,resumeSeq 
+	        ,educationFlag 
+	        ,schoolName 
+	        ,major 
+	        ,diploma 
+	        ,eduStartDate
+	        ,eduEndDate 
+
+		)VALUES(
+		
+			educationSeq.NEXTVAL
+			,#{resumeSeq}
+			,#{educationFlag}
+			,#{schoolName}
+			,#{major}
+			,#{diploma}
+			,#{eduStartDate}
+			,#{eduEndDate}
+			
+			)
+	</insert>
+
+	<insert id="insertAbility" parameterType="Ability">
+		INSERT INTO ABILITY(
+		
+			ABILITYSEQ
+			,RESUMESEQ
+			,ABILITYTITLE
+			,ABILITYSTATUS
+			,ABILITYDETAILS
+		
+		)VALUES(
+		
+			ABILITYSEQ.NEXTVAL
+			,#{resumeSeq}
+			,#{abilityTitle}
+			,#{abilityStatus}
+			,#{abilityDetails}
+			
+			)
+	</insert>
+	
+	<insert id="insertActivity" parameterType="Activity">
+	
+		INSERT INTO ACTIVITY(
+		
+			ACTIVITYSEQ
+			,RESUMESEQ
+			,ACTIVITYTITLE
+			,ACTIVITYORG
+			,ACTIVITYDETAILS		
+		
+		)VALUES(
+			ACTIVITYSEQ.NEXTVAL
+			,#{resumeSeq}
+			,#{activityTitle}
+			,#{activityOrg}
+			,#{activityDetails}
+			
+		)
+
+	</insert>
+
+	<insert id="insertCertificate" parameterType="Certificate">
+	
+	INSERT INTO CERTI(
+	
+		CERTISEQ 
+	    , RESUMESEQ 
+	    , CERTITITLE
+	    , CERTIORG 
+	    , CERTIDATE
+	    	
+	)VALUES(
+	
+		CERTISEQ.NEXTVAL
+		,#{resumeSeq}
+		,#{certiTitle}
+		,#{certiOrg}
+		,#{certiDate}	
+	
+	)
+	
+	</insert>
+	
+	<insert id="insertLanguageScore" parameterType="LanguageScore">
+	
+	INSERT INTO LANGUAGESCORE(
+	
+		LANGUAGESEQ 
+	    , RESUMESEQ 
+	    , LANGUAGETYPE 
+	    , LANGUAGETITLE 
+	    , LANGUAGESCORE
+	    , LANGUAGEORG
+	    , LANGUAGEDATE 	
+	
+	)VALUES(
+	
+		LANGUAGESEQ.NEXTVAL 
+	    , #{resumeSeq}
+	    , #{languageType}
+	    , #{languageTitle}
+	    , #{languageScore}
+	    , #{languageOrg}
+	    , #{languageDate}
+	
+	)
+	
+	</insert>
+
+	<insert id="insertCareer" parameterType="Career">
+		
+		INSERT INTO CAREER(
+		
+		    CAREERSEQ 
+		    , RESUMESEQ 
+		    , COMPANYNAME 
+		    , CAREERCATEGORY 
+		    , CAREERSTARTDATE 
+		    , CAREERENDDATE 
+		    , CAREERDEPARTMENT 
+		    , CAREERPOSITION 
+		    , CAREERREGION 
+		    , CAREERSALARY
+		    , CAREERTASK
+		    , CAREERDETAILS
+		
+		)VALUES(
+		
+			CAREERSEQ.NEXTVAL
+			,#{resumeSeq}
+			,#{companyName}
+			,#{careerCategory}
+			,#{careerStartDate}
+			,#{careerEndDate}
+			,#{careerDepartment}
+			,#{careerPosition}
+			,#{careerRegion}
+			,#{careerSalary}
+			,#{careerTask}
+			,#{careerDetails}
+			
+		)
+	
+	</insert>
+	
+	<select id="selectResumeSeq" parameterType="String" resultType="int">
+	
+	SELECT
+		RESUMESEQ
+	FROM
+		RESUMEMAIN
+	WHERE
+		PERSONID=#{personId}
+	
+	</select>
+
+	<select id="selectBasicInfo" parameterType="int" resultType="BasicInfo">
+	
+	SELECT 
+		BASICSEQ
+		,RESUMESEQ
+		,PERSONID
+		,PERSONNAME
+<!-- 	,TO_CHAR(BIRTHDATE, 'YYYY-MM-DD')-->		
+ 		,BIRTHDATE
+		,GENDER
+		,PERSONEMAIL
+		,PERSONPHONE
+		,PERSONADDR
+	
+	FROM BASICINFO
+	WHERE RESUMESEQ=#{resumeSeq}
+	
+	</select>
+
+	<select id="selectCareer" parameterType="int" resultType="Career">
+	
+	SELECT 
+	    CAREERSEQ 
+	    , RESUMESEQ 
+	    , COMPANYNAME 
+	    , CAREERCATEGORY 
+	 	, TO_CHAR(CAREERSTARTDATE, 'YYYY-MM-DD') CAREERSTARTDATE		
+    	, TO_CHAR(CAREERENDDATE, 'YYYY-MM-DD') CAREERENDDATE	 
+	    , CAREERDEPARTMENT 
+	    , CAREERPOSITION 
+	    , CAREERREGION 
+	    , CAREERSALARY
+	    , CAREERTASK
+	    , CAREERDETAILS
+	
+	FROM CAREER
+	WHERE RESUMESEQ=#{resumeSeq}
+	
+	</select>  
+	
+	<select id="selectCerti" parameterType="int" resultType="Certificate">
+	
+	SELECT 
+		CERTISEQ 
+	    , RESUMESEQ 
+	    , CERTITITLE 
+	    , CERTIORG 
+		, TO_CHAR(CERTIDATE, 'YYYY-MM-DD') CERTIDATE
+	
+	FROM CERTI
+	WHERE RESUMESEQ=#{resumeSeq}
+	
+	</select>
+
+	<select id="selectLanguage" parameterType="int" resultType="LanguageScore">
+	
+	SELECT 
+	
+		LANGUAGESEQ 
+	    , RESUMESEQ 
+	    , LANGUAGETYPE 
+	    , LANGUAGETITLE 
+	    , LANGUAGESCORE
+	    , LANGUAGEORG
+	    , TO_CHAR(LANGUAGEDATE, 'YYYY-MM-DD') LANGUAGEDATE
+	
+	FROM LANGUAGESCORE
+	WHERE RESUMESEQ=#{resumeSeq}
+	
+	</select>
+
+	<select id="selectAbility" parameterType="int" resultType="Ability">
+	
+	SELECT 
+		ABILITYSEQ
+		,RESUMESEQ
+		,ABILITYTITLE
+		,ABILITYSTATUS
+		,ABILITYDETAILS
+
+	FROM Ability
+	WHERE RESUMESEQ=#{resumeSeq}
+	
+	</select>
+	
+	<select id="selectActivity" parameterType="int" resultType="Activity">
+	
+	SELECT 
+	
+		ACTIVITYSEQ
+		,RESUMESEQ
+		,ACTIVITYTITLE
+		,ACTIVITYORG
+		,ACTIVITYDETAILS		
+
+	FROM Activity
+	WHERE RESUMESEQ=#{resumeSeq}
+	
+	</select>
+	
+
+	<select id="selectEducation" parameterType="int" resultType="Education">
+	
+	SELECT
+		educationSeq 
+        ,resumeSeq 
+        ,educationFlag 
+        ,schoolName 
+        ,major 
+        ,diploma 
+        ,TO_CHAR(eduStartDate, 'YYYY-MM-DD') eduStartDate 
+        ,TO_CHAR(eduEndDate, 'YYYY-MM-DD') eduEndDate  
+	
+	FROM EDUCATION
+	WHERE RESUMESEQ=#{resumeSeq}
+	
+	</select>
+
+	 
+	<delete id="deleteResumeMain" parameterType="int">
+	
+	DELETE
+		FROM
+	RESUMEMAIN
+		WHERE
+	RESUMESEQ=#{updateResumeSeq}	
+			
+	</delete>
+		
+	<delete id="deleteBasicInfo" parameterType="int">
+	
+	DELETE
+		FROM
+	BASICINFO
+		WHERE
+	RESUMESEQ=#{updateResumeSeq}	
+	
+	
+	</delete>
+		
+	<delete id="deleteAbility" parameterType="int">
+	
+	DELETE
+		FROM
+	Ability
+		WHERE
+	RESUMESEQ=#{updateResumeSeq}		
+		
+	</delete>
+		
+	<delete id="deleteActivity" parameterType="int">
+		
+	DELETE
+		FROM
+	Activity
+		WHERE
+	RESUMESEQ=#{updateResumeSeq}	
+	
+		
+	</delete>
+		
+		
+	<delete id="deleteCareer" parameterType="int">
+		
+	DELETE
+		FROM
+	Career
+		WHERE
+	RESUMESEQ=#{updateResumeSeq}	
+		
+		
+	</delete>
+		
+		
+	<delete id="deleteCerti" parameterType="int">
+		
+	DELETE
+		FROM
+	Certi
+		WHERE
+	RESUMESEQ=#{updateResumeSeq}	
+		
+		
+	</delete>
+		
+		
+	<delete id="deleteEducation" parameterType="int">
+		
+	DELETE
+		FROM
+	Education
+		WHERE
+	RESUMESEQ=#{updateResumeSeq}	
+		
+		
+	</delete>
+		
+		
+	<delete id="deleteLanguageScore" parameterType="int">
+		
+	DELETE
+		FROM
+	LanguageScore
+		WHERE
+	RESUMESEQ=#{updateResumeSeq}	
+		
+		
+	</delete>
+
+
+</mapper>

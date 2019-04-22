@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<!-- 
+		<typeAlias type="com.sample.test.VO.HeadHunter" alias="HH" />
+		<typeAlias type="com.sample.test.VO.Person" alias="Person" />
+		<typeAlias type="com.sample.test.VO.Login" alias="Login" />
+		<typeAlias type="com.sample.test.VO.QnaBoard" alias="QnaBoard" />
+		<typeAlias type="com.sample.test.VO.QnaComment" alias="QnaComment" />
+		<typeAlias type="com.sample.test.VO.Request" alias="Request" />
+		<typeAlias type="com.sample.test.VO.Options" alias="Options" />
+		
+
+		<typeAlias type="com.sample.test.VO.resume.TotalResume" alias="TotalResume" />
+		<typeAlias type="com.sample.test.VO.resume.BasicInfo" alias="BasicInfo" />
+		<typeAlias type="com.sample.test.VO.resume.Ability" alias="Ability" />
+		<typeAlias type="com.sample.test.VO.resume.Activity" alias="Activity" />
+		<typeAlias type="com.sample.test.VO.resume.Certificate" alias="Certificate" />
+		<typeAlias type="com.sample.test.VO.resume.LanguageScore" alias="LanguageScore" />
+		<typeAlias type="com.sample.test.VO.resume.Career" alias="Career" />
+		<typeAlias type="com.sample.test.VO.resume.Education" alias="Education" />
+		 -->
+		 
+ 		<typeAlias type="com.sample.test.VO.HeadHunter" alias="HH" />
+		<typeAlias type="com.sample.test.VO.Person" alias="Person" />
+		<typeAlias type="com.sample.test.VO.Login" alias="Login" />
+		<typeAlias type="com.sample.test.VO.QnaBoard" alias="QnaBoard" />
+		<typeAlias type="com.sample.test.VO.QnaComment" alias="QnaComment" />
+		 
+		<typeAlias type="com.sample.test.VO.resume.TotalResume" alias="TotalResume" />
+		<typeAlias type="com.sample.test.VO.resume.BasicInfo" alias="BasicInfo" />
+		<typeAlias type="com.sample.test.VO.resume.Ability" alias="Ability" />
+		<typeAlias type="com.sample.test.VO.resume.Activity" alias="Activity" />
+		<typeAlias type="com.sample.test.VO.resume.Certificate" alias="Certificate" />
+		<typeAlias type="com.sample.test.VO.resume.LanguageScore" alias="LanguageScore" />
+		<typeAlias type="com.sample.test.VO.resume.Career" alias="Career" />
+		<typeAlias type="com.sample.test.VO.resume.Education" alias="Education" />
+		
+		<typeAlias type="com.sample.test.VO.Person" alias="Person"/>
+		<typeAlias type="com.sample.test.VO.PersonList" alias="PersonList" /> 
+ 		<typeAlias type="com.sample.test.VO.Request" alias="Request" />
+		<typeAlias type="com.sample.test.VO.Options" alias="Options" />
+		<typeAlias type="com.sample.test.VO.ContactMessage" alias="ContactMessage" />
+		<typeAlias type="com.sample.test.VO.DiaryInfo" alias="DiaryInfo" />
+		<typeAlias type="com.sample.test.VO.Chat" alias="Chat" />	
+		
+		
+	</typeAliases>
+	<mappers>
+		<mapper resource="mapper/hhMapper.xml" />
+		<mapper resource="mapper/resumeMapper.xml" />
+		<mapper resource="mapper/userMapper.xml" />
+		<mapper resource="mapper/qnaMapper.xml" />
+		<mapper resource="mapper/diaryMapper.xml" />
+		<mapper resource="mapper/personMapper.xml"/>
+		
+			
+<!-- 		
+		<mapper resource="mapper/personMapper.xml" />
+		<mapper resource="mapper/qnaMapper.xml" />
+ -->		
+	</mappers>
+</configuration>
